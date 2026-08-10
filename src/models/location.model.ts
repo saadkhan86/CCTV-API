@@ -5,6 +5,9 @@ const LocationSchema = new Schema<ILocation.Doc>({
     ownerId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
     locationName: { type: String, required: true, trim: true, minLength: 10, maxLength: 100 },
     locationType: { type: String, required: true, trim: true, minLength: 10, maxLength: 50 },
+    agentToken: {
+        type: String,
+    },
     isDeleted: { type: Boolean, default: false }
 }, { timestamps: true })
 

@@ -1,10 +1,12 @@
 import CustomError from "../errorHandler/customError.js";
 import { ILocation } from "../interfaces/ILocation.js";
 import { Location } from "../models/location.model.js";
+import { tokenUtils } from "../utils/tokenUtils.js";
 
 class locationRepo {
     public async create(data: ILocation.Create) {
-        const location = Location.create({ ownerId: data.ownerId, locationName: data.locationName, locationType: data.locationType })
+        const agentToken = tokenUtils.generateTokenForAgent()
+        const location = Location.create({ ownerId: data.ownerId, locationName: data.locationName, locationType: data.locationType, agentToken })
         return location
     }
 

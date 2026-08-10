@@ -2,6 +2,7 @@ import crypto from "crypto"
 import jwt from "jsonwebtoken"
 import { Types } from "mongoose"
 import CustomError from "../errorHandler/customError.js"
+import { bytes } from "stream/consumers"
 export const tokenUtils = {
     genTokenForVerification: (bytes = 32) => {
         return crypto.randomBytes(bytes).toString("hex")
@@ -25,5 +26,7 @@ export const tokenUtils = {
         } catch (error) {
             return null
         }
-    },
+    }, generateTokenForAgent: (bytes = 16) => {
+        return crypto.randomBytes(bytes).toString("hex")
+    }
 }
