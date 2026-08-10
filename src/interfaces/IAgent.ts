@@ -1,27 +1,28 @@
-import {Document} from "mongoose"
+import { Document, Types } from "mongoose"
 
-export declare namespace IAgent{
+export declare namespace IAgent {
 
-    interface Register{
-        locationId:string
-        name:string
-        version:string
-        status:"installed"|"online"|"offline"|"error"
-        lastSeenAt:Date
-        hostName:string
-        ipAddress:string
-        os:string
+    interface Register {
+        agentToken: string
+        locationId: string | Types.ObjectId
+        name: string
+        version: string
+        status: "installed" | "offline" | "online" | "error"
+        lastSeenAt: Date
+        hostName: string
+        ipAddress: string
+        os: string
     }
-    
-    interface Doc extends Document , Register{
-    
+
+    interface Doc extends Document, Register {
+
     }
-    interface Update{
-        agentId:string
-        status:"installed"|"online"|"offline"|"error"
-        lastSeenAt:Date
-        hostName:string
-        ipAddress:string
-        os:string
+    interface Update {
+        agentId: string | Types.ObjectId
+        status: "online" | "offline" | "error"
+        lastSeenAt: Date
+        hostName: string
+        ipAddress: string
+        os: string
     }
 }

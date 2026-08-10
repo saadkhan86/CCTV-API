@@ -1,6 +1,8 @@
 import { NextFunction, Request, Response } from "express"
 import locationRepo from "../repositories/locationRepo.js"
 import { ILocation } from "../interfaces/ILocation.js"
+import agentRepo from "../repositories/agentRepo.js"
+import { IAgent } from "../interfaces/IAgent.js"
 
 export const locationController = {
     create: async (req: Request, res: Response, next: NextFunction) => {

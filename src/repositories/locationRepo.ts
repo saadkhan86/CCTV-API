@@ -9,7 +9,6 @@ class locationRepo {
         const location = Location.create({ ownerId: data.ownerId, locationName: data.locationName, locationType: data.locationType, agentToken })
         return location
     }
-
     public async get(data: ILocation.Get) {
         const { page, limit } = data
         let _query: Record<string, any> = {}

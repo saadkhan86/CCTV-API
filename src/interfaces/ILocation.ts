@@ -5,7 +5,7 @@ export declare namespace ILocation {
         ownerId: Types.ObjectId | string;
         locationName: string;
         locationType: string;
-        agentToken: string
+        agentToken: string | null
         isDeleted: boolean;
     }
     interface Create {

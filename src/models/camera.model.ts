@@ -1,25 +1,78 @@
-import mongoose from "mongoose"
-const cameraSchema = new mongoose.Schema({
-    agentId:{
-        type:mongoose.Types.ObjectId,
-        ref:"Agent"
+import mongoose, { Schema, Document } from "mongoose";
+
+
+
+const CameraSchema = new Schema<ICamera>(
+    {
+        locationId: {
+            type: Schema.Types.ObjectId,
+            ref: "Location",
+            required: true,
+            index: true,
+        },
+
+        agentId: {
+            type: Schema.Types.ObjectId,
+            ref: "Agent",
+            required: true,
+            index: true,
+        },
+
+        connectionId: {
+            type: Schema.Types.ObjectId,
+            ref: "DVR_NVR_Connection",
+            required: true,
+            index: true,
+        },
+
+        channel: {
+            type: Number,
+            required: true,
+            min: 1,
+        },
+
+        name: {
+            type: String,
+            required: true,
+            trim: true,
+        },
+
+        ipAddress: {
+            type: String,
+            trim: true,
+        },
+
+        manufacturer: {
+            type: String,
+            trim: true,
+        },
+
+        model: {
+            type: String,
+            trim: true,
+        },
+
+        status: {
+            type: String,
+            enum: ["discovered", "active", "inactive", "offline"],
+            default: "discovered",
+        },
+
+        isActive: {
+            type: Boolean,
+            default: false,
+        },
+
+        discoveredAt: {
+            type: Date,
+            default: Date.now,
+        },
+
+        lastSeenAt: {
+            type: Date,
+        },
     },
-    cameraStreamId:{
-        type:String
-    },name:{
-        type:String
-    },channel:{
-        type:Number
-    },subStreamUrl:{
-        type:String
-    },codec:{
-        type:String
-    },resolution:{
-        type:String
-    },fps:{
-        type:Number
-    },bitrate:{
-        type:Number
+    {
+        timestamps: true,
     }
-})
-export const Camera = mongoose.model("Camera",cameraSchema)
+);
