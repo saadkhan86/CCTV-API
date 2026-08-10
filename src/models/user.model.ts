@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import bcrypt from "bcryptjs";
+import bcrypt from "bcrypt";
 import { IUser } from "../interfaces/IUser.js";
 
 const SALT_ROUNDS = 5;
