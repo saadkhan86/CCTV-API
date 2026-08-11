@@ -2,7 +2,7 @@ import { Schema, model } from "mongoose";
 import bcrypt from "bcrypt";
 import { IUser } from "../interfaces/IUser.js";
 
-const SALT_ROUNDS = 5;
+const SALT_ROUNDS = 10;
 
 const UserSchema = new Schema<IUser.Doc>({
     email: {
