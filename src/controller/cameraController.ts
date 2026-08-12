@@ -7,7 +7,7 @@ export const cameraController = {
         const camera = await cameraRepo.create(req.body as ICamera.Create)
     },
     get: async (req: Request, res: Response, next: NextFunction) => {
-
+        
     },
     update: async (req: Request, res: Response, next: NextFunction) => {
 

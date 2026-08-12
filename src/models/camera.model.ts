@@ -1,8 +1,8 @@
 import mongoose, { Schema, Document } from "mongoose";
+import { ICamera } from "../interfaces/ICamera.js";
 
 
-
-const CameraSchema = new Schema<ICamera>(
+const CameraSchema = new Schema<ICamera.Doc>(
     {
         locationId: {
             type: Schema.Types.ObjectId,
@@ -76,3 +76,6 @@ const CameraSchema = new Schema<ICamera>(
         timestamps: true,
     }
 );
+CameraSchema.index({isActive:1})
+
+export const Camera = mongoose.model("Camera",CameraSchema)
