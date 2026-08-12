@@ -6,7 +6,7 @@ export const verificationController = {
     verifyEmail: async (req: Request, res: Response, next: NextFunction) => {
         const { token } = req.params
         if (!token) res.status(499).json({ success: false, message: "verification token required" })
-        const verify = verificationRepo.verifyEmail(token as string)
+        await verificationRepo.verifyEmail(token as string)
         res.status(200).json({ success: true, message: "email verification succssfull" })
     }, resendVerificationEmail: async (req: Request, res: Response, next: NextFunction) => {
         const { email } = req.body
