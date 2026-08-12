@@ -1,16 +1,16 @@
 import CustomError from "../errorHandler/customError.js"
 import { ICamera } from "../interfaces/ICamera.js"
-import { Camera } from "../models/Camera.model.js"
-import 
-class cameraRepo {
+class CameraRepo {
     public async create(data: ICamera.Create) {
         return await Camera.create(data)
     }
-    public async get(data:{cameraId:Types.ObjectId | string,agentId:TypeErrorConstructor.ObjectId | string}){
-        
+    public async get(data:{cameraId:Types.ObjectId | string,agentId:Types.ObjectId | string}){
+        const camera = await Camera.findOne({_id:data.cameraId,agentId:data.agentId})
+        if(!camera) throw new CustomError("Camera Not Found",404)
+        return camera
     }
     public async update(data: ICamera.Update) {
-        let camera =  await Camera.findById(data.cameraId)
+        let camera =  await Camera.findOne({_id:data.cameraId,agentId:data.agentId})
         if(!camera) throw new CustomError("Camera not found",404)
         if(data.cameraModel) camera.cameraModel = data.cameraModel
         if(data.ipAddress) camera.ipAddress = data.ipAddress
@@ -20,4 +20,6 @@ class cameraRepo {
         return await camera.save()
     }   
 }
+import { Types } from "mongoose"
+import { Camera } from "../models/camera.model.js"
 export default new cameraRepo()
