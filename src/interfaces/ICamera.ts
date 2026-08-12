@@ -39,5 +39,16 @@ export declare namespace ICamera {
         discoveredAt: Date;
         lastSeenAt?: Date;
     }
+    interface Update{
+        cameraId:Types.ObjectId | string
+        agentId: Types.ObjectId | string;
 
+        ipAddress?: string;
+        manufacturer?: string;
+        cameraModel?: string;
+
+        status: "discovered" | "active" | "inactive" | "offline";
+        isActive: boolean;
+
+    }
 }
