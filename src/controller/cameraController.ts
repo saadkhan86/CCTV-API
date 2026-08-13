@@ -4,7 +4,7 @@ import cameraRepo from "../repositories/cameraRepo.js";
 export const cameraController = {
     create: async (req: Request, res: Response, next: NextFunction) => {
         const {cameras} = req.body
-        if(!Array.isArray(cameras)){
+        if(!Array.isArray(cameras) && cameras.length > 0){
            return res.status(400).json({success:false,message:"Cameras array is required"})
         }
         const locationId = req.params.locationId 
