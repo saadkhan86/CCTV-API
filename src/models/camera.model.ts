@@ -47,7 +47,7 @@ const CameraSchema = new Schema<ICamera.Doc>(
             trim: true,
         },
 
-        model: {
+        cameraModel: {
             type: String,
             trim: true,
         },
