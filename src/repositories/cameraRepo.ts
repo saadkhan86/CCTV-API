@@ -1,6 +1,8 @@
+import { Types } from "mongoose"
 import CustomError from "../errorHandler/customError.js"
 import { ICamera } from "../interfaces/ICamera.js"
-class CameraRepo {
+import { Camera } from "../models/camera.model.js"
+class cameraRepo {
     public async create(data: ICamera.Create) {
         return await Camera.create(data)
     }
@@ -20,6 +22,4 @@ class CameraRepo {
         return await camera.save()
     }   
 }
-import { Types } from "mongoose"
-import { Camera } from "../models/camera.model.js"
 export default new cameraRepo()

@@ -78,4 +78,4 @@ const CameraSchema = new Schema<ICamera.Doc>(
 );
 CameraSchema.index({isActive:1})
 
-export const Camera = mongoose.model("Camera",CameraSchema)
+export const Camera = mongoose.model<ICamera.Doc>("Camera",CameraSchema)
