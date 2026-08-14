@@ -1,5 +1,5 @@
 import mongoose, { Document, Schema } from "mongoose";
-const streamSchema = new Schema<IStream>(
+const streamSchema = new Schema<IStream.Doc>(
   {
     cameraId: {
       type: Schema.Types.ObjectId,
@@ -97,4 +97,4 @@ streamSchema.index({
   streamPath: 1,
 });
 
-export default mongoose.model<IStream>("Stream", streamSchema);
+export default mongoose.model<IStream.Doc>("Stream", streamSchema);
