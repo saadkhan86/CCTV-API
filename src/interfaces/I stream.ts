@@ -1,5 +1,6 @@
 
 export declare namespace IStream {
+  interface Create{
   cameraId: mongoose.Types.ObjectId;
   agentId: mongoose.Types.ObjectId;
   locationId: mongoose.Types.ObjectId;
@@ -20,4 +21,5 @@ export declare namespace IStream {
 
   createdAt: Date;
   updatedAt: Date;
+}
 }
