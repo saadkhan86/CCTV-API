@@ -1,4 +1,4 @@
-import express from "express"
+import express, { Request, Response } from "express"
 import helmet from "helmet"
 import env from "dotenv"
 import { router } from "./router/router.js";
@@ -22,8 +22,8 @@ app.get("/",(req: Request,res: Response)=>
     {
         res.status(200).json({success:true,message:"server is working"})
     })
-app.use("/api/v1", router)
 
+app.use("/api/v1", router)
 
 connection().then(() => {
     app.listen(process.env.PORT, () => {
